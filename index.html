@@ -6,6 +6,7 @@
     <title></title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
 </head>
 <style>
@@ -28,6 +29,10 @@
                     <div id="box">
                         <input type="text" name="path">
                         <input type="file" name="image" accept="image/*">
+                        <button type="button" class="close" aria-label="Close">
+                            <span aria-hidden="true">×</span>
+                          </button>
+                        
                     </div>
                 </div>
                 </br>
@@ -37,9 +42,26 @@
     </div>
     <script>
         $(document).ready(function() {
+            var html = '<div id="box">' +
+             '<input type="text" name="path">' +
+             '<input type="file" name="image" accept="image/*">' +
+             '<button type="button" class="close" aria-label="Close">' +
+               '<span aria-hidden="true">×</span>' +
+             '</button>' +
+           '</div>';
+           var $html = $(html);
+            $('.close').first().click(function(e) {
+                $(this).parent().hide()
+            }); 
             $('.add').click(function(event) {
                 event.preventDefault();
-                $("#box").clone().appendTo(".mainbox");
+                $(html).appendTo(".mainbox");
+                var buttons = $(".close");
+                buttons.each(function(index, button) {
+                    $(button).click(function() {
+                        $(this).parent().hide()
+                    });
+                });   
             });
         });
     </script>
