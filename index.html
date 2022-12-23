@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
+</head>
+<style>
+    .main {
+        width: 100vw;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    #box{
+        margin:5px;
+    }
+</style>
+<body>
+    <div class="main">
+        <div class="sub">
+            <form method="post">
+                <div class="mainbox">
+                    <div id="box">
+                        <input type="text" name="path">
+                        <input type="file" name="image" accept="image/*">
+                    </div>
+                </div>
+                </br>
+                <button class="add">ADD</button>
+            </form>
+        </div>
+    </div>
+    <script>
+        $(document).ready(function() {
+            $('.add').click(function(event) {
+                event.preventDefault();
+                $("#box").clone().appendTo(".mainbox");
+            });
+        });
+    </script>
+</body>
+</html>
